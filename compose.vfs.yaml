@@ -1,0 +1,23 @@
+# Local Linux development on Docker's copy-heavy vfs driver. Locked host
+# dependencies are read-only; each generated worker gets its own compiler cache.
+x-local-worker: &local-worker
+  image: loan-lab:runtime
+  pull_policy: never
+  volumes:
+    - type: bind
+      source: .
+      target: /app
+      read_only: true
+  tmpfs:
+    - /app/node_modules/.mastra:size=268435456
+services:
+  application-worker:
+    <<: *local-worker
+    build:
+      context: .
+      target: runtime
+      secrets: [cloud_proxy_ca]
+  ocr-worker:
+    <<: *local-worker
+  extraction-worker:
+    <<: *local-worker

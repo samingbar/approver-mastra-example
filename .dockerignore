@@ -1,0 +1,9 @@
+.git
+node_modules
+.env
+.data
+.local
+.mastra
+test-results
+coverage
+*.log

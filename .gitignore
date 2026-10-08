@@ -1,0 +1,12 @@
+node_modules/
+node_modules
+.env
+.data/
+.local/
+.mastra/
+dist/
+ui/dist/
+coverage/
+test-results/
+*.log
+*.tsbuildinfo

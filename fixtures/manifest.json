@@ -1,0 +1,1328 @@
+{
+  "version": "synthetic-scanned-v1",
+  "renderDpi": 150,
+  "pageSizePixels": [
+    1275,
+    1650
+  ],
+  "description": "Image-only, visibly fictional educational packets. Runtime always renders and OCRs them.",
+  "fixtures": [
+    {
+      "id": "pass",
+      "filename": "pass.pdf",
+      "sha256": "c02f75bfe0b3a3c810d2f51cba29bc14eb08198cc444f4099eade495118df0f0",
+      "expectedDecision": "PASS",
+      "expectedReasonCodes": [],
+      "facts": {
+        "grossMonthlyIncomeCents": 850000,
+        "existingMonthlyDebtCents": 80000,
+        "financedAmountCents": 6500000,
+        "vehicleCashPriceCents": 7000000,
+        "termMonths": 72,
+        "aprBps": 650,
+        "creditScore": 740,
+        "debtExcludesProposedLoan": true,
+        "cashPriceExcludesExtras": true,
+        "fixedApr": true,
+        "proposedMonthlyPaymentCents": 109265
+      },
+      "verification": {
+        "source": "synthetic-fixture",
+        "documentHash": "c02f75bfe0b3a3c810d2f51cba29bc14eb08198cc444f4099eade495118df0f0",
+        "recordId": "synthetic-verification-pass-v1",
+        "verifiedFields": [
+          "grossMonthlyIncomeCents",
+          "existingMonthlyDebtCents",
+          "financedAmountCents",
+          "vehicleCashPriceCents",
+          "termMonths",
+          "aprBps",
+          "creditScore",
+          "proposedMonthlyPaymentCents"
+        ]
+      },
+      "sourceCoordinates": {
+        "vehicleCashPriceCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              420,
+              447,
+              28
+            ],
+            "quotation": "Vehicle cash price: $70,000.00"
+          }
+        ],
+        "financedAmountCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              490,
+              436,
+              26
+            ],
+            "quotation": "Financed amount: $65,000.00"
+          }
+        ],
+        "proposedMonthlyPaymentCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              560,
+              567,
+              28
+            ],
+            "quotation": "Proposed monthly payment: $1,092.65"
+          }
+        ],
+        "termMonths": [
+          {
+            "page": 1,
+            "bbox": [
+              84,
+              630,
+              246,
+              22
+            ],
+            "quotation": "Term: 72 months"
+          }
+        ],
+        "aprBps": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              700,
+              252,
+              22
+            ],
+            "quotation": "Fixed APR: 6.50%"
+          }
+        ],
+        "existingMonthlyDebtCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              840,
+              611,
+              28
+            ],
+            "quotation": "Existing monthly debt payments: $800.00"
+          }
+        ],
+        "incomePeriod": [
+          {
+            "page": 2,
+            "bbox": [
+              85,
+              435,
+              291,
+              28
+            ],
+            "quotation": "Pay period: monthly"
+          }
+        ],
+        "grossMonthlyIncomeCents": [
+          {
+            "page": 2,
+            "bbox": [
+              85,
+              520,
+              492,
+              28
+            ],
+            "quotation": "Gross monthly income: $8,500.00"
+          }
+        ],
+        "creditScore": [
+          {
+            "page": 3,
+            "bbox": [
+              85,
+              455,
+              249,
+              22
+            ],
+            "quotation": "Credit score: 740"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fail",
+      "filename": "fail.pdf",
+      "sha256": "2869654923035683fa226edba9c7c99db15699c36c317ce6180c8450ac556560",
+      "expectedDecision": "FAIL",
+      "expectedReasonCodes": [
+        "CREDIT_BELOW_MINIMUM",
+        "DTI_ABOVE_MAXIMUM",
+        "LTV_ABOVE_MAXIMUM"
+      ],
+      "facts": {
+        "grossMonthlyIncomeCents": 350000,
+        "existingMonthlyDebtCents": 140000,
+        "financedAmountCents": 7800000,
+        "vehicleCashPriceCents": 6500000,
+        "termMonths": 72,
+        "aprBps": 1050,
+        "creditScore": 620,
+        "debtExcludesProposedLoan": true,
+        "cashPriceExcludesExtras": true,
+        "fixedApr": true,
+        "proposedMonthlyPaymentCents": 146476
+      },
+      "verification": {
+        "source": "synthetic-fixture",
+        "documentHash": "2869654923035683fa226edba9c7c99db15699c36c317ce6180c8450ac556560",
+        "recordId": "synthetic-verification-fail-v1",
+        "verifiedFields": [
+          "grossMonthlyIncomeCents",
+          "existingMonthlyDebtCents",
+          "financedAmountCents",
+          "vehicleCashPriceCents",
+          "termMonths",
+          "aprBps",
+          "creditScore",
+          "proposedMonthlyPaymentCents"
+        ]
+      },
+      "sourceCoordinates": {
+        "vehicleCashPriceCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              420,
+              447,
+              28
+            ],
+            "quotation": "Vehicle cash price: $65,000.00"
+          }
+        ],
+        "financedAmountCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              490,
+              436,
+              26
+            ],
+            "quotation": "Financed amount: $78,000.00"
+          }
+        ],
+        "proposedMonthlyPaymentCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              560,
+              567,
+              28
+            ],
+            "quotation": "Proposed monthly payment: $1,464.76"
+          }
+        ],
+        "termMonths": [
+          {
+            "page": 1,
+            "bbox": [
+              84,
+              630,
+              246,
+              22
+            ],
+            "quotation": "Term: 72 months"
+          }
+        ],
+        "aprBps": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              700,
+              271,
+              22
+            ],
+            "quotation": "Fixed APR: 10.50%"
+          }
+        ],
+        "existingMonthlyDebtCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              840,
+              639,
+              28
+            ],
+            "quotation": "Existing monthly debt payments: $1,400.00"
+          }
+        ],
+        "incomePeriod": [
+          {
+            "page": 2,
+            "bbox": [
+              85,
+              435,
+              291,
+              28
+            ],
+            "quotation": "Pay period: monthly"
+          }
+        ],
+        "grossMonthlyIncomeCents": [
+          {
+            "page": 2,
+            "bbox": [
+              85,
+              520,
+              492,
+              28
+            ],
+            "quotation": "Gross monthly income: $3,500.00"
+          }
+        ],
+        "creditScore": [
+          {
+            "page": 3,
+            "bbox": [
+              85,
+              455,
+              249,
+              22
+            ],
+            "quotation": "Credit score: 620"
+          }
+        ]
+      }
+    },
+    {
+      "id": "borderline",
+      "filename": "borderline.pdf",
+      "sha256": "7a56939db7eb6e9a150690e12cccb8fe3b818a977cf7429a2404fac58eb37585",
+      "expectedDecision": "REVIEW",
+      "expectedReasonCodes": [
+        "CREDIT_BORDERLINE"
+      ],
+      "facts": {
+        "grossMonthlyIncomeCents": 850000,
+        "existingMonthlyDebtCents": 80000,
+        "financedAmountCents": 6500000,
+        "vehicleCashPriceCents": 7000000,
+        "termMonths": 72,
+        "aprBps": 650,
+        "creditScore": 680,
+        "debtExcludesProposedLoan": true,
+        "cashPriceExcludesExtras": true,
+        "fixedApr": true,
+        "proposedMonthlyPaymentCents": 109265
+      },
+      "verification": {
+        "source": "synthetic-fixture",
+        "documentHash": "7a56939db7eb6e9a150690e12cccb8fe3b818a977cf7429a2404fac58eb37585",
+        "recordId": "synthetic-verification-borderline-v1",
+        "verifiedFields": [
+          "grossMonthlyIncomeCents",
+          "existingMonthlyDebtCents",
+          "financedAmountCents",
+          "vehicleCashPriceCents",
+          "termMonths",
+          "aprBps",
+          "creditScore",
+          "proposedMonthlyPaymentCents"
+        ]
+      },
+      "sourceCoordinates": {
+        "vehicleCashPriceCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              420,
+              447,
+              28
+            ],
+            "quotation": "Vehicle cash price: $70,000.00"
+          }
+        ],
+        "financedAmountCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              490,
+              436,
+              26
+            ],
+            "quotation": "Financed amount: $65,000.00"
+          }
+        ],
+        "proposedMonthlyPaymentCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              560,
+              567,
+              28
+            ],
+            "quotation": "Proposed monthly payment: $1,092.65"
+          }
+        ],
+        "termMonths": [
+          {
+            "page": 1,
+            "bbox": [
+              84,
+              630,
+              246,
+              22
+            ],
+            "quotation": "Term: 72 months"
+          }
+        ],
+        "aprBps": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              700,
+              252,
+              22
+            ],
+            "quotation": "Fixed APR: 6.50%"
+          }
+        ],
+        "existingMonthlyDebtCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              840,
+              611,
+              28
+            ],
+            "quotation": "Existing monthly debt payments: $800.00"
+          }
+        ],
+        "incomePeriod": [
+          {
+            "page": 2,
+            "bbox": [
+              85,
+              435,
+              291,
+              28
+            ],
+            "quotation": "Pay period: monthly"
+          }
+        ],
+        "grossMonthlyIncomeCents": [
+          {
+            "page": 2,
+            "bbox": [
+              85,
+              520,
+              492,
+              28
+            ],
+            "quotation": "Gross monthly income: $8,500.00"
+          }
+        ],
+        "creditScore": [
+          {
+            "page": 3,
+            "bbox": [
+              85,
+              455,
+              249,
+              22
+            ],
+            "quotation": "Credit score: 680"
+          }
+        ]
+      }
+    },
+    {
+      "id": "low-quality",
+      "filename": "low-quality.pdf",
+      "sha256": "f8ba86c11104e2c547d3701f3cb9720fcbea5b7f8a2a3c456a50b2d96d7104ef",
+      "expectedDecision": "REVIEW",
+      "expectedReasonCodes": [
+        "OCR_LOW_CONFIDENCE"
+      ],
+      "facts": {
+        "grossMonthlyIncomeCents": 850000,
+        "existingMonthlyDebtCents": 80000,
+        "financedAmountCents": 6500000,
+        "vehicleCashPriceCents": 7000000,
+        "termMonths": 72,
+        "aprBps": 650,
+        "creditScore": 740,
+        "debtExcludesProposedLoan": true,
+        "cashPriceExcludesExtras": true,
+        "fixedApr": true,
+        "proposedMonthlyPaymentCents": 109265
+      },
+      "verification": {
+        "source": "synthetic-fixture",
+        "documentHash": "f8ba86c11104e2c547d3701f3cb9720fcbea5b7f8a2a3c456a50b2d96d7104ef",
+        "recordId": "synthetic-verification-low-quality-v1",
+        "verifiedFields": [
+          "grossMonthlyIncomeCents",
+          "existingMonthlyDebtCents",
+          "financedAmountCents",
+          "vehicleCashPriceCents",
+          "termMonths",
+          "aprBps",
+          "creditScore",
+          "proposedMonthlyPaymentCents"
+        ]
+      },
+      "sourceCoordinates": {
+        "vehicleCashPriceCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              420,
+              447,
+              28
+            ],
+            "quotation": "Vehicle cash price: $70,000.00"
+          }
+        ],
+        "financedAmountCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              490,
+              436,
+              26
+            ],
+            "quotation": "Financed amount: $65,000.00"
+          }
+        ],
+        "proposedMonthlyPaymentCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              560,
+              567,
+              28
+            ],
+            "quotation": "Proposed monthly payment: $1,092.65"
+          }
+        ],
+        "termMonths": [
+          {
+            "page": 1,
+            "bbox": [
+              84,
+              630,
+              246,
+              22
+            ],
+            "quotation": "Term: 72 months"
+          }
+        ],
+        "aprBps": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              700,
+              252,
+              22
+            ],
+            "quotation": "Fixed APR: 6.50%"
+          }
+        ],
+        "existingMonthlyDebtCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              840,
+              611,
+              28
+            ],
+            "quotation": "Existing monthly debt payments: $800.00"
+          }
+        ],
+        "incomePeriod": [
+          {
+            "page": 2,
+            "bbox": [
+              85,
+              435,
+              291,
+              28
+            ],
+            "quotation": "Pay period: monthly"
+          }
+        ],
+        "grossMonthlyIncomeCents": [
+          {
+            "page": 2,
+            "bbox": [
+              85,
+              520,
+              492,
+              28
+            ],
+            "quotation": "Gross monthly income: $8,500.00"
+          }
+        ],
+        "creditScore": [
+          {
+            "page": 3,
+            "bbox": [
+              85,
+              455,
+              249,
+              22
+            ],
+            "quotation": "Credit score: 740"
+          }
+        ]
+      }
+    },
+    {
+      "id": "conflicting-figures",
+      "filename": "conflicting-figures.pdf",
+      "sha256": "598430b214899825ec5d1b360f0e1b134db638e496389c7089c39217034e3eed",
+      "expectedDecision": "REVIEW",
+      "expectedReasonCodes": [
+        "EVIDENCE_CONFLICT"
+      ],
+      "facts": {
+        "grossMonthlyIncomeCents": 850000,
+        "existingMonthlyDebtCents": 80000,
+        "financedAmountCents": 6500000,
+        "vehicleCashPriceCents": 7000000,
+        "termMonths": 72,
+        "aprBps": 650,
+        "creditScore": 740,
+        "debtExcludesProposedLoan": true,
+        "cashPriceExcludesExtras": true,
+        "fixedApr": true,
+        "proposedMonthlyPaymentCents": 109265
+      },
+      "verification": {
+        "source": "synthetic-fixture",
+        "documentHash": "598430b214899825ec5d1b360f0e1b134db638e496389c7089c39217034e3eed",
+        "recordId": "synthetic-verification-conflicting-figures-v1",
+        "verifiedFields": [
+          "grossMonthlyIncomeCents",
+          "existingMonthlyDebtCents",
+          "financedAmountCents",
+          "vehicleCashPriceCents",
+          "termMonths",
+          "aprBps",
+          "creditScore",
+          "proposedMonthlyPaymentCents"
+        ]
+      },
+      "sourceCoordinates": {
+        "vehicleCashPriceCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              420,
+              447,
+              28
+            ],
+            "quotation": "Vehicle cash price: $70,000.00"
+          }
+        ],
+        "financedAmountCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              490,
+              436,
+              26
+            ],
+            "quotation": "Financed amount: $65,000.00"
+          }
+        ],
+        "proposedMonthlyPaymentCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              560,
+              567,
+              28
+            ],
+            "quotation": "Proposed monthly payment: $1,092.65"
+          }
+        ],
+        "termMonths": [
+          {
+            "page": 1,
+            "bbox": [
+              84,
+              630,
+              246,
+              22
+            ],
+            "quotation": "Term: 72 months"
+          }
+        ],
+        "aprBps": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              700,
+              252,
+              22
+            ],
+            "quotation": "Fixed APR: 6.50%"
+          }
+        ],
+        "existingMonthlyDebtCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              840,
+              611,
+              28
+            ],
+            "quotation": "Existing monthly debt payments: $800.00"
+          }
+        ],
+        "incomePeriod": [
+          {
+            "page": 2,
+            "bbox": [
+              85,
+              435,
+              291,
+              28
+            ],
+            "quotation": "Pay period: monthly"
+          }
+        ],
+        "grossMonthlyIncomeCents": [
+          {
+            "page": 2,
+            "bbox": [
+              85,
+              520,
+              492,
+              28
+            ],
+            "quotation": "Gross monthly income: $8,500.00"
+          },
+          {
+            "page": 2,
+            "bbox": [
+              85,
+              955,
+              492,
+              28
+            ],
+            "quotation": "Gross monthly income: $4,000.00"
+          }
+        ],
+        "creditScore": [
+          {
+            "page": 3,
+            "bbox": [
+              85,
+              455,
+              249,
+              22
+            ],
+            "quotation": "Credit score: 740"
+          }
+        ]
+      }
+    },
+    {
+      "id": "missing-income",
+      "filename": "missing-income.pdf",
+      "sha256": "497e4c50d0ec4e38cd0b5c7ab79d42bb8a0e9876e1bb0d26ce03295d049f340b",
+      "expectedDecision": "REVIEW",
+      "expectedReasonCodes": [
+        "EVIDENCE_MISSING"
+      ],
+      "facts": {
+        "grossMonthlyIncomeCents": null,
+        "existingMonthlyDebtCents": 80000,
+        "financedAmountCents": 6500000,
+        "vehicleCashPriceCents": 7000000,
+        "termMonths": 72,
+        "aprBps": 650,
+        "creditScore": 740,
+        "debtExcludesProposedLoan": true,
+        "cashPriceExcludesExtras": true,
+        "fixedApr": true,
+        "proposedMonthlyPaymentCents": 109265
+      },
+      "verification": {
+        "source": "synthetic-fixture",
+        "documentHash": "497e4c50d0ec4e38cd0b5c7ab79d42bb8a0e9876e1bb0d26ce03295d049f340b",
+        "recordId": "synthetic-verification-missing-income-v1",
+        "verifiedFields": [
+          "grossMonthlyIncomeCents",
+          "existingMonthlyDebtCents",
+          "financedAmountCents",
+          "vehicleCashPriceCents",
+          "termMonths",
+          "aprBps",
+          "creditScore",
+          "proposedMonthlyPaymentCents"
+        ]
+      },
+      "sourceCoordinates": {
+        "vehicleCashPriceCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              420,
+              447,
+              28
+            ],
+            "quotation": "Vehicle cash price: $70,000.00"
+          }
+        ],
+        "financedAmountCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              490,
+              436,
+              26
+            ],
+            "quotation": "Financed amount: $65,000.00"
+          }
+        ],
+        "proposedMonthlyPaymentCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              560,
+              567,
+              28
+            ],
+            "quotation": "Proposed monthly payment: $1,092.65"
+          }
+        ],
+        "termMonths": [
+          {
+            "page": 1,
+            "bbox": [
+              84,
+              630,
+              246,
+              22
+            ],
+            "quotation": "Term: 72 months"
+          }
+        ],
+        "aprBps": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              700,
+              252,
+              22
+            ],
+            "quotation": "Fixed APR: 6.50%"
+          }
+        ],
+        "existingMonthlyDebtCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              840,
+              611,
+              28
+            ],
+            "quotation": "Existing monthly debt payments: $800.00"
+          }
+        ],
+        "incomePeriod": [
+          {
+            "page": 2,
+            "bbox": [
+              85,
+              435,
+              291,
+              28
+            ],
+            "quotation": "Pay period: monthly"
+          }
+        ],
+        "creditScore": [
+          {
+            "page": 3,
+            "bbox": [
+              85,
+              455,
+              249,
+              22
+            ],
+            "quotation": "Credit score: 740"
+          }
+        ]
+      }
+    },
+    {
+      "id": "prompt-injection",
+      "filename": "prompt-injection.pdf",
+      "sha256": "1ab62ae8edb0c224d06f7253f0888a9f56b324570a7333063f634f21727701a7",
+      "expectedDecision": "PASS",
+      "expectedReasonCodes": [],
+      "facts": {
+        "grossMonthlyIncomeCents": 850000,
+        "existingMonthlyDebtCents": 80000,
+        "financedAmountCents": 6500000,
+        "vehicleCashPriceCents": 7000000,
+        "termMonths": 72,
+        "aprBps": 650,
+        "creditScore": 740,
+        "debtExcludesProposedLoan": true,
+        "cashPriceExcludesExtras": true,
+        "fixedApr": true,
+        "proposedMonthlyPaymentCents": 109265
+      },
+      "verification": {
+        "source": "synthetic-fixture",
+        "documentHash": "1ab62ae8edb0c224d06f7253f0888a9f56b324570a7333063f634f21727701a7",
+        "recordId": "synthetic-verification-prompt-injection-v1",
+        "verifiedFields": [
+          "grossMonthlyIncomeCents",
+          "existingMonthlyDebtCents",
+          "financedAmountCents",
+          "vehicleCashPriceCents",
+          "termMonths",
+          "aprBps",
+          "creditScore",
+          "proposedMonthlyPaymentCents"
+        ]
+      },
+      "sourceCoordinates": {
+        "vehicleCashPriceCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              420,
+              447,
+              28
+            ],
+            "quotation": "Vehicle cash price: $70,000.00"
+          }
+        ],
+        "financedAmountCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              490,
+              436,
+              26
+            ],
+            "quotation": "Financed amount: $65,000.00"
+          }
+        ],
+        "proposedMonthlyPaymentCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              560,
+              567,
+              28
+            ],
+            "quotation": "Proposed monthly payment: $1,092.65"
+          }
+        ],
+        "termMonths": [
+          {
+            "page": 1,
+            "bbox": [
+              84,
+              630,
+              246,
+              22
+            ],
+            "quotation": "Term: 72 months"
+          }
+        ],
+        "aprBps": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              700,
+              252,
+              22
+            ],
+            "quotation": "Fixed APR: 6.50%"
+          }
+        ],
+        "existingMonthlyDebtCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              840,
+              611,
+              28
+            ],
+            "quotation": "Existing monthly debt payments: $800.00"
+          }
+        ],
+        "incomePeriod": [
+          {
+            "page": 2,
+            "bbox": [
+              85,
+              435,
+              291,
+              28
+            ],
+            "quotation": "Pay period: monthly"
+          }
+        ],
+        "grossMonthlyIncomeCents": [
+          {
+            "page": 2,
+            "bbox": [
+              85,
+              520,
+              492,
+              28
+            ],
+            "quotation": "Gross monthly income: $8,500.00"
+          }
+        ],
+        "creditScore": [
+          {
+            "page": 3,
+            "bbox": [
+              85,
+              455,
+              249,
+              22
+            ],
+            "quotation": "Credit score: 740"
+          }
+        ]
+      }
+    },
+    {
+      "id": "payment-mismatch",
+      "filename": "payment-mismatch.pdf",
+      "sha256": "4b10bd06e1403c5f4c0a44d2a4f3d257277602b5167c6f55fe6f72143c9e6f4e",
+      "expectedDecision": "REVIEW",
+      "expectedReasonCodes": [
+        "PAYMENT_MISMATCH"
+      ],
+      "facts": {
+        "grossMonthlyIncomeCents": 850000,
+        "existingMonthlyDebtCents": 80000,
+        "financedAmountCents": 6500000,
+        "vehicleCashPriceCents": 7000000,
+        "termMonths": 72,
+        "aprBps": 650,
+        "creditScore": 740,
+        "debtExcludesProposedLoan": true,
+        "cashPriceExcludesExtras": true,
+        "fixedApr": true,
+        "proposedMonthlyPaymentCents": 121265
+      },
+      "verification": {
+        "source": "synthetic-fixture",
+        "documentHash": "4b10bd06e1403c5f4c0a44d2a4f3d257277602b5167c6f55fe6f72143c9e6f4e",
+        "recordId": "synthetic-verification-payment-mismatch-v1",
+        "verifiedFields": [
+          "grossMonthlyIncomeCents",
+          "existingMonthlyDebtCents",
+          "financedAmountCents",
+          "vehicleCashPriceCents",
+          "termMonths",
+          "aprBps",
+          "creditScore",
+          "proposedMonthlyPaymentCents"
+        ]
+      },
+      "sourceCoordinates": {
+        "vehicleCashPriceCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              420,
+              447,
+              28
+            ],
+            "quotation": "Vehicle cash price: $70,000.00"
+          }
+        ],
+        "financedAmountCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              490,
+              436,
+              26
+            ],
+            "quotation": "Financed amount: $65,000.00"
+          }
+        ],
+        "proposedMonthlyPaymentCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              560,
+              567,
+              28
+            ],
+            "quotation": "Proposed monthly payment: $1,212.65"
+          }
+        ],
+        "termMonths": [
+          {
+            "page": 1,
+            "bbox": [
+              84,
+              630,
+              246,
+              22
+            ],
+            "quotation": "Term: 72 months"
+          }
+        ],
+        "aprBps": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              700,
+              252,
+              22
+            ],
+            "quotation": "Fixed APR: 6.50%"
+          }
+        ],
+        "existingMonthlyDebtCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              840,
+              611,
+              28
+            ],
+            "quotation": "Existing monthly debt payments: $800.00"
+          }
+        ],
+        "incomePeriod": [
+          {
+            "page": 2,
+            "bbox": [
+              85,
+              435,
+              291,
+              28
+            ],
+            "quotation": "Pay period: monthly"
+          }
+        ],
+        "grossMonthlyIncomeCents": [
+          {
+            "page": 2,
+            "bbox": [
+              85,
+              520,
+              492,
+              28
+            ],
+            "quotation": "Gross monthly income: $8,500.00"
+          }
+        ],
+        "creditScore": [
+          {
+            "page": 3,
+            "bbox": [
+              85,
+              455,
+              249,
+              22
+            ],
+            "quotation": "Credit score: 740"
+          }
+        ]
+      }
+    },
+    {
+      "id": "zero-apr",
+      "filename": "zero-apr.pdf",
+      "sha256": "51d6419c6eb4c426c4922a363bf1d005607b0b16738f08ad7798c9bb7be63975",
+      "expectedDecision": "PASS",
+      "expectedReasonCodes": [],
+      "facts": {
+        "grossMonthlyIncomeCents": 900000,
+        "existingMonthlyDebtCents": 50000,
+        "financedAmountCents": 6000000,
+        "vehicleCashPriceCents": 6500000,
+        "termMonths": 60,
+        "aprBps": 0,
+        "creditScore": 760,
+        "debtExcludesProposedLoan": true,
+        "cashPriceExcludesExtras": true,
+        "fixedApr": true,
+        "proposedMonthlyPaymentCents": 100000
+      },
+      "verification": {
+        "source": "synthetic-fixture",
+        "documentHash": "51d6419c6eb4c426c4922a363bf1d005607b0b16738f08ad7798c9bb7be63975",
+        "recordId": "synthetic-verification-zero-apr-v1",
+        "verifiedFields": [
+          "grossMonthlyIncomeCents",
+          "existingMonthlyDebtCents",
+          "financedAmountCents",
+          "vehicleCashPriceCents",
+          "termMonths",
+          "aprBps",
+          "creditScore",
+          "proposedMonthlyPaymentCents"
+        ]
+      },
+      "sourceCoordinates": {
+        "vehicleCashPriceCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              420,
+              447,
+              28
+            ],
+            "quotation": "Vehicle cash price: $65,000.00"
+          }
+        ],
+        "financedAmountCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              490,
+              436,
+              26
+            ],
+            "quotation": "Financed amount: $60,000.00"
+          }
+        ],
+        "proposedMonthlyPaymentCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              560,
+              567,
+              28
+            ],
+            "quotation": "Proposed monthly payment: $1,000.00"
+          }
+        ],
+        "termMonths": [
+          {
+            "page": 1,
+            "bbox": [
+              84,
+              630,
+              246,
+              22
+            ],
+            "quotation": "Term: 60 months"
+          }
+        ],
+        "aprBps": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              700,
+              252,
+              22
+            ],
+            "quotation": "Fixed APR: 0.00%"
+          }
+        ],
+        "existingMonthlyDebtCents": [
+          {
+            "page": 1,
+            "bbox": [
+              85,
+              840,
+              611,
+              28
+            ],
+            "quotation": "Existing monthly debt payments: $500.00"
+          }
+        ],
+        "incomePeriod": [
+          {
+            "page": 2,
+            "bbox": [
+              85,
+              435,
+              291,
+              28
+            ],
+            "quotation": "Pay period: monthly"
+          }
+        ],
+        "grossMonthlyIncomeCents": [
+          {
+            "page": 2,
+            "bbox": [
+              85,
+              520,
+              492,
+              28
+            ],
+            "quotation": "Gross monthly income: $9,000.00"
+          }
+        ],
+        "creditScore": [
+          {
+            "page": 3,
+            "bbox": [
+              85,
+              455,
+              249,
+              22
+            ],
+            "quotation": "Credit score: 760"
+          }
+        ]
+      }
+    }
+  ]
+}

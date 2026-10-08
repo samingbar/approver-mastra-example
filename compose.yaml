@@ -1,0 +1,106 @@
+name: loan-lab
+x-app: &app
+  image: loan-lab:local
+  pull_policy: never
+  init: true
+  environment: &environment
+    MODE: ${MODE:-fixture}
+    COMPANY_NAME: ${COMPANY_NAME:-Rivian-inspired Loan Lab}
+    ACCENT_COLOR: ${ACCENT_COLOR:-#b45309}
+    HOST: 0.0.0.0
+    PORT: 3000
+    TEMPORAL_ADDRESS: temporal:7233
+    TEMPORAL_NAMESPACE: default
+    DATABASE_URL: postgres://loan_app:loan_demo@postgres:5432/loan_demo
+    DATABASE_ADMIN_URL: postgres://postgres:local_postgres@postgres:5432/loan_demo
+    S3_ENDPOINT: http://objects:9000
+    S3_BUCKET: loan-artifacts
+    S3_ACCESS_KEY: S3RVER
+    S3_SECRET_KEY: S3RVER
+    OCR_ACTIVITY_SLOTS: ${OCR_ACTIVITY_SLOTS:-4}
+    OMP_THREAD_LIMIT: 1
+    OCR_VERSION: ocr-v1-eng-dpi150-tess5.3-pop22.12
+    EXTRACTION_ACTIVITY_SLOTS: ${EXTRACTION_ACTIVITY_SLOTS:-4}
+    APPLICATION_ACTIVITY_SLOTS: ${APPLICATION_ACTIVITY_SLOTS:-16}
+    MAX_ACTIVE_APPLICATIONS: ${MAX_ACTIVE_APPLICATIONS:-200}
+    MODEL_ID: ${MODEL_ID:-openai/gpt-4.1-mini}
+    MODEL_API_KEY: ${MODEL_API_KEY:-}
+    NO_PROXY: localhost,127.0.0.1,0.0.0.0,temporal,postgres,objects
+    no_proxy: localhost,127.0.0.1,0.0.0.0,temporal,postgres,objects
+  depends_on:
+    postgres: {condition: service_healthy}
+    temporal: {condition: service_started}
+    objects: {condition: service_started}
+    initialize: {condition: service_completed_successfully}
+services:
+  postgres:
+    image: postgres:16.6-alpine@sha256:1d04b9ba1d4996401f2552b51beda8187f175c0645c091e4781134fc9c9a3eef
+    environment:
+      POSTGRES_PASSWORD: local_postgres
+      POSTGRES_DB: loan_demo
+    ports: ['127.0.0.1:5432:5432']
+    volumes: ['postgres:/var/lib/postgresql/data']
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres -d loan_demo']
+      interval: 2s
+      timeout: 2s
+      retries: 30
+  temporal:
+    image: temporalio/temporal:1.4.1@sha256:9844298258519ebece82b3253f1ee1fc4eb8d87b7abcc264cfb676be342c74a5
+    user: '0:0'
+    environment:
+      NO_PROXY: localhost,127.0.0.1,0.0.0.0
+      no_proxy: localhost,127.0.0.1,0.0.0.0
+    command: ['server', 'start-dev', '--ip', '0.0.0.0', '--ui-ip', '0.0.0.0', '--db-filename', '/data/temporal.db', '--metrics-port', '9090']
+    ports: ['127.0.0.1:7233:7233', '127.0.0.1:8233:8233']
+    volumes: ['temporal:/data']
+  objects:
+    image: loan-lab:local
+    pull_policy: never
+    init: true
+    command: ['npx', '--no-install', 'tsx', 'src/local-object-store.ts']
+    volumes: ['objects:/data/objects']
+    ports: ['127.0.0.1:9000:9000']
+  initialize:
+    image: loan-lab:local
+    pull_policy: never
+    environment: *environment
+    command: ['npx', '--no-install', 'tsx', 'scripts/initialize.ts']
+    depends_on:
+      postgres: {condition: service_healthy}
+      objects: {condition: service_started}
+  api:
+    <<: *app
+    build:
+      context: .
+      secrets: [cloud_proxy_ca]
+    command: ['npm', 'run', 'api']
+    ports: ['127.0.0.1:${LOCAL_APP_PORT:-3000}:3000']
+    healthcheck:
+      test: ['CMD', 'node', '-e', "fetch('http://127.0.0.1:3000/api/config').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 3s
+      timeout: 3s
+      retries: 40
+  application-worker:
+    <<: *app
+    command: ['npm', 'run', 'worker:application']
+    cpus: 1
+    mem_limit: 768m
+  ocr-worker:
+    <<: *app
+    command: ['npm', 'run', 'worker:ocr']
+    cpus: 1
+    mem_limit: 1024m
+  extraction-worker:
+    <<: *app
+    command: ['npm', 'run', 'worker:extraction']
+    cpus: 1
+    mem_limit: 768m
+volumes:
+  postgres:
+  temporal:
+  objects:
+secrets:
+  cloud_proxy_ca:
+    # Optional public CA only. Empty by default on ordinary local machines.
+    file: ${LOCAL_CA_CERT_FILE:-config/empty-ca.pem}

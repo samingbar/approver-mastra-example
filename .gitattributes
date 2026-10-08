@@ -1,0 +1,2 @@
+# Preserve fixture bytes and SHA-256 verification across platforms.
+*.pdf binary
